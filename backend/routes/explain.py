@@ -20,8 +20,10 @@ model = ModelInference(
     model_id="ibm/granite-4-h-small",
     credentials=credentials,
     project_id=os.getenv("WATSONX_PROJECT_ID"),
+    params={
+        "max_new_tokens": 500
+    }
 )
-
 class ExplainRequest(BaseModel):
     incident: str
     question: str

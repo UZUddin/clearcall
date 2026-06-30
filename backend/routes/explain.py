@@ -20,10 +20,8 @@ model = ModelInference(
     model_id="ibm/granite-4-h-small",
     credentials=credentials,
     project_id=os.getenv("WATSONX_PROJECT_ID"),
-    params={
-        "max_new_tokens": 500
-    }
 )
+
 class ExplainRequest(BaseModel):
     incident: str
     question: str
@@ -33,8 +31,12 @@ def explain_incident(data: ExplainRequest):
     rules = retrieve(data.question)
     prompt = build_prompt(data.incident, data.question, rules)
     try:
-        response = model.generate_text(prompt=prompt)
-        explanation = response
+        messages = [
+            {"role": "system", "content": "You are ClearCall, an AI assistant that explains VAR decisions using the official FIFA Laws of the Game. Be clear, accurate, and accessible."},
+            {"role": "user", "content": prompt}
+        ]
+        response = model.chat(messages=messages, params={"max_new_tokens": 500})
+        explanation = response["choices"][0]["message"]["content"]
     except Exception as e:
         import traceback
         print("WATSONX ERROR:", traceback.format_exc())

@@ -35,7 +35,7 @@ def explain_incident(data: ExplainRequest):
             {"role": "system", "content": "You are ClearCall, an AI assistant that explains VAR decisions using the official FIFA Laws of the Game. Be clear, accurate, and accessible."},
             {"role": "user", "content": prompt}
         ]
-        response = model.chat(messages=messages, params={"max_new_tokens": 500})
+        response = model.chat(messages=messages, params={"max_new_tokens": 800})
         explanation = response["choices"][0]["message"]["content"]
     except Exception as e:
         import traceback

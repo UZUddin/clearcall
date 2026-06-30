@@ -34,7 +34,9 @@ def explain_incident(data: ExplainRequest):
         response = model.generate_text(prompt=prompt)
         explanation = response
     except Exception as e:
-        explanation = f"[LLM temporarily unavailable due to high demand: {str(e)[:100]}]"
+        import traceback
+        print("WATSONX ERROR:", traceback.format_exc())
+        explanation = f"[LLM error: {str(e)}]"
     return {
         "explanation": explanation,
         "rules_used": rules

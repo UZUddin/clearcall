@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --pitch: #0F1410;
+  --pitch-deep: #0A0E0B;
+  --chalk: #F5F3EE;
+  --chalk-dim: #C9C7BE;
+  --card-yellow: #E8B339;
+  --sage: #3A4A3D;
+  --sage-light: #4F6354;
+  --line: rgba(245, 243, 238, 0.12);
+  --serif: 'Source Serif 4', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--pitch);
+  color: var(--chalk);
+  font-family: var(--sans);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.masthead {
+  border-bottom: 1px solid var(--line);
+  padding: 2.5rem 2rem 2rem;
+  background: linear-gradient(180deg, var(--pitch-deep), var(--pitch));
+}
+
+.masthead-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--card-yellow);
+  font-weight: 600;
+}
+
+.masthead h1 {
+  font-family: var(--serif);
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0.3rem 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--chalk-dim);
+  font-size: 1.05rem;
+  margin: 0;
+  max-width: 46ch;
+}
+
+.layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 0;
+}
+
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+.panel-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+  font-weight: 600;
+  margin: 0 0 1rem;
+  padding: 1.75rem 1.5rem 0;
+}
+
+.case-file {
+  border-right: 1px solid var(--line);
+  min-height: 60vh;
+}
+
+.incident-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0.75rem 1.5rem;
+}
+
+.incident-item {
+  cursor: pointer;
+  padding: 0.9rem 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.incident-item:hover {
+  background: rgba(245, 243, 238, 0.04);
+}
+
+.incident-item.is-active {
+  background: rgba(232, 179, 57, 0.08);
+  border-color: rgba(232, 179, 57, 0.35);
+}
+
+.incident-item .incident-type {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--card-yellow);
+  font-weight: 600;
+}
+
+.incident-item .incident-match {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.incident-item .incident-desc {
+  font-size: 0.82rem;
+  color: var(--chalk-dim);
+  line-height: 1.4;
+}
+
+.incident-empty {
+  padding: 0.75rem;
+  color: var(--chalk-dim);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.ruling-desk {
+  padding: 1.75rem 2rem 3rem;
+}
+
+.empty-state {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--chalk-dim);
+  padding: 4rem 1rem;
+  gap: 1rem;
+}
+
+.whistle-mark {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  color: var(--sage-light);
+}
+
+.incident-banner {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.incident-banner .incident-type {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--card-yellow);
+  font-weight: 600;
+}
+
+.incident-banner h2 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  margin: 0.3rem 0 0.4rem;
+}
+
+.incident-banner p {
+  color: var(--chalk-dim);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.question-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.75rem;
+}
+
+.question-row input {
+  flex: 1;
+  background: rgba(245, 243, 238, 0.05);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: var(--chalk);
+  font-family: var(--sans);
+  font-size: 0.92rem;
+}
+
+.question-row input:focus {
+  outline: 2px solid var(--card-yellow);
+  outline-offset: 1px;
+}
+
+.question-row input::placeholder {
+  color: var(--chalk-dim);
+}
+
+.question-row button {
+  background: var(--card-yellow);
+  color: var(--pitch-deep);
+  border: none;
+  border-radius: 6px;
+  padding: 0 1.4rem;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.question-row button:hover:not(:disabled) {
+  background: #f0c358;
+}
+
+.question-row button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-text {
+  color: #e08a8a;
+  font-size: 0.88rem;
+}
+
+.verdict {
+  background: rgba(58, 74, 61, 0.18);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+}
+
+.verdict-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage-light);
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.verdict-text {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin: 0 0 1.5rem;
+  white-space: pre-wrap;
+}
+
+.citations h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.citation-stubs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.citation-stub {
+  border-left: 3px solid var(--card-yellow);
+  background: rgba(245, 243, 238, 0.03);
+  padding: 0.7rem 1rem;
+  border-radius: 0 6px 6px 0;
+}
+
+.stub-index {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--card-yellow);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.citation-stub p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--chalk-dim);
+  line-height: 1.5;
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 1.25rem 2rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--chalk-dim);
+}
